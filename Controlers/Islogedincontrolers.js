@@ -6,7 +6,7 @@ exports.Islogined = async (req, res, next) => {
     const cookietkn =  req.id;
 
     if(cookietkn){
-        Userloginstatus.create({Username:cookietkn,Date:new Date()})
+        
         res.json({
             success:true,
             message:"Logedin",
