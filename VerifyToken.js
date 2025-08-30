@@ -10,14 +10,14 @@ async function verifyToken(req, res, next) {
 
     try {
         const token = req.cookies.Ts;
-        if (!token) return res.status(401).json({ message: "No token" });
+        if (!token) return resjson({ message: "No token" });
         const payload = jwt.verify(token, process.env.SECRET_KEY);
         req.id = payload.email;
         
     }
     catch (error) {
         console.log("Error in verify token", error);
-        res.status(401).json({ message: "Invalid token" });
+        res.json({ message: "Invalid token" });
     }
 next();
 
