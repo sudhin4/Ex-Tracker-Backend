@@ -47,7 +47,4 @@ app.use('/api/v1',DeleteRoute);
 
 
 
-const PORTvalue = process.env.PORT || 3000;
-
-
 module.exports = serverless(app)

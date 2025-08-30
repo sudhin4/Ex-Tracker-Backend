@@ -35,7 +35,7 @@ exports.signupcontrolers = async (req, res, next) => {
 
                 res.cookie('Ts', token, {
                     httpOnly: true,
-                     secure: process.env.NODE_ENV === "production",
+                     secure: false,
                     sameSite: 'none',
                     path: '/',
 

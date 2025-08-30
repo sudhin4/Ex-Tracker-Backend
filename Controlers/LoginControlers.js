@@ -36,8 +36,8 @@ exports.loginroute = async (req, res, next) => {
 
                 res.cookie('Ts', token, {
                     httpOnly: true,
-                     secure: process.env.NODE_ENV === "production",
-                    sameSite: 'lax',
+                     secure: false,
+                    sameSite: 'none',
                     path: '/',
 
                 });
