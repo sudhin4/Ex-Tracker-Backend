@@ -2,7 +2,8 @@ const signupmodel = require('../Models/Signupmodel');
 const Userloginstatus = require('../Models/UserLoginStatus');
 
 
-exports.Islogined = async (req, res, next) => {
+exports.Islogined =  (req, res, next) => {
+    console.log("route hit",req.cookies,req.id)
     const cookietkn =  req.id;
 
     if(cookietkn){
