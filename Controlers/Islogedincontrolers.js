@@ -4,7 +4,10 @@ const Userloginstatus = require('../Models/UserLoginStatus');
 
 exports.Islogined = async (req, res, next) => {
     const cookietkn =  req.id;
-    
+    res.json({
+        success:true,
+        message:"Fuckkk"
+    })
     const erormsg = req.message;
 
     
