@@ -45,6 +45,11 @@ app.use('/api/v1',LineChartSection);
 app.use('/api/v1',UpdateInexRoute);
 app.use('/api/v1',DeleteRoute);
 
+app.get('/api/v1/test',(req,res)=>{
+  console.log(("test route hit"))
+  res.json({success:true})
+})
+
 
 
 
