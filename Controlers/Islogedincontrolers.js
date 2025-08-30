@@ -4,13 +4,7 @@ const Userloginstatus = require('../Models/UserLoginStatus');
 
 exports.Islogined = async (req, res, next) => {
     const cookietkn =  req.id;
-    res.json({
-        success:true,
-        message:"Fuckkk"
-    })
-    const erormsg = req.message;
 
-    
     if(cookietkn){
         Userloginstatus.create({Username:cookietkn,Date:new Date()})
         res.json({
@@ -20,7 +14,7 @@ exports.Islogined = async (req, res, next) => {
         })
     }
     else{
-        res.json({
+        res.status(401).json({
         success: false,
         message: "This Token is invalid"
     })
