@@ -21,10 +21,16 @@ const serverless = require('serverless-http')
 connectdatabase();
 app.use(express.json());
 app.use(cookieParser())
+const cors = require("cors");
+
 app.use(cors({
-    origin:"http://localhost:5173", //using * when the mobile api is working
-    credentials:true,
+  origin: [
+    "http://localhost:5173",                
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
 }));
+
 
 app.use('/api/v1', Loginroute);
 app.use('/api/v1',Singuproute);
