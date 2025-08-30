@@ -22,7 +22,7 @@ connectdatabase();
 app.use(express.json());
 app.use(cookieParser())
 app.use(cors({
-    origin:"http://192.168.91.226:5173", //using * when the mobile api is working
+    origin:"http://localhost:5173", //using * when the mobile api is working
     credentials:true,
 }));
 
