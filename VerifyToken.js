@@ -13,13 +13,13 @@ async function verifyToken(req, res, next) {
         if (!token) return res.status(401).json({ message: "No token" });
         const payload = jwt.verify(token, process.env.SECRET_KEY);
         req.id = payload.email;
-        next();
+        
     }
     catch (error) {
         console.log("Error in verify token", error);
         res.status(401).json({ message: "Invalid token" });
     }
-
+next();
 
 
 
