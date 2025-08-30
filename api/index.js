@@ -1,0 +1,47 @@
+require('dotenv').config();
+const connectdatabase = require('../Config/DatabaseConnection');
+const express = require("express");
+const app = express();
+const cors = require('cors')
+const Loginroute = require("../Routes/LoginRoute");
+const Singuproute = require('../Routes/SignupRoute')
+const IslogedinRoute = require('../Routes/IsloginCheckroute');
+const IncomeexpanseRoute = require('../Routes/InExdataRoute');
+const cookieParser = require('cookie-parser');
+const LastTranscation = require('../Routes/LastTransactionRoute');
+const Singlepagesection = require('../Routes/SinglepageRoute')
+const Totalbalancesection = require('../Routes/TotalBalanceRoute');
+const ChartDatasection = require('../Routes/ChartDataRoute');
+const Logoutsection = require('../Routes/LogoutRoute');
+const LineChartSection = require('../Routes/LinechartRoute');
+const UpdateInexRoute = require('../Routes/UpdataInexroute');
+const DeleteRoute = require('../Routes/DeleteTransactionRoute');
+
+const serverless = require('serverless-http')
+connectdatabase();
+app.use(express.json());
+app.use(cookieParser())
+app.use(cors({
+    origin:"http://192.168.91.226:5173", //using * when the mobile api is working
+    credentials:true,
+}));
+
+app.use('/api/v1', Loginroute);
+app.use('/api/v1',Singuproute);
+app.use('/api/v1',IslogedinRoute);
+app.use('/api/v1',IncomeexpanseRoute);
+app.use('/api/v1',LastTranscation);
+app.use('/api/v1',Singlepagesection);
+app.use('/api/v1',Totalbalancesection);
+app.use('/api/v1',ChartDatasection);
+app.use('/api/v1',Logoutsection);
+app.use('/api/v1',LineChartSection);
+app.use('/api/v1',UpdateInexRoute);
+app.use('/api/v1',DeleteRoute);
+
+
+
+const PORTvalue = process.env.PORT || 3000;
+
+
+module.exports = serverless(app)
