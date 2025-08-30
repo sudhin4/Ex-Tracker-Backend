@@ -3,7 +3,6 @@ const Userloginstatus = require('../Models/UserLoginStatus');
 
 
 exports.Islogined =  (req, res, next) => {
-    console.log("route hit",req.cookies,req.id)
     const cookietkn =  req.id;
 
     if(cookietkn){

@@ -8,18 +8,36 @@ const secertkey = process.env.SECERT_KEY;
 async function verifyToken(req, res, next) {
 
 
-    try {
-        const token = req.cookies.Ts;
-        if (!token) return resjson({ message: "No token" });
-        const payload = jwt.verify(token, process.env.SECRET_KEY);
-        req.id = payload.email;
+    const tokenvalue = req.cookies.Ts;
+
+    if(!tokenvalue){
+        res.json({
+            valid:false,
+            message:"Token not found"
+        })
+    }
+    try{
+        const payload = jwt.verify(tokenvalue,secertkey)
         
+            const emailfromtoken = payload.email
+            const isemailindb = await signupmodel.findOne({ Email: emailfromtoken });
+            if(isemailindb){
+                req.id = isemailindb
+            }else{
+                req.id=null
+            }
+            next();
+
     }
-    catch (error) {
-        console.log("Error in verify token", error);
-        res.json({ message: "Invalid token" });
+    catch(err){
+        return res.json({
+            success:false,
+            message:'Invalid Token',
+        })
     }
-next();
+
+    
+
 
 
 
