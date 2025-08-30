@@ -1,21 +1,21 @@
 require('dotenv').config();
-const connectDatabase = require('../Config/DatabaseConnection.js')
+const connectDatabase = require('./Config/DatabaseConnection.js')
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const Loginroute = require("../Routes/LoginRoute");
-const Singuproute = require('../Routes/SignupRoute')
-const IslogedinRoute = require('../Routes/IsloginCheckroute');
-const IncomeexpanseRoute = require('../Routes/InExdataRoute');
+const Loginroute = require("./Routes/LoginRoute.js");
+const Singuproute = require('./Routes/SignupRoute.js')
+const IslogedinRoute = require('./Routes/IsloginCheckroute.js');
+const IncomeexpanseRoute = require('./Routes/InExdataRoute.js');
 const cookieParser = require('cookie-parser');
-const LastTranscation = require('../Routes/LastTransactionRoute');
-const Singlepagesection = require('../Routes/SinglepageRoute')
-const Totalbalancesection = require('../Routes/TotalBalanceRoute');
-const ChartDatasection = require('../Routes/ChartDataRoute');
-const Logoutsection = require('../Routes/LogoutRoute');
-const LineChartSection = require('../Routes/LinechartRoute');
-const UpdateInexRoute = require('../Routes/UpdataInexroute');
-const DeleteRoute = require('../Routes/DeleteTransactionRoute');
+const LastTranscation = require('./Routes/LastTransactionRoute.js');
+const Singlepagesection = require('./Routes/SinglepageRoute.js')
+const Totalbalancesection = require('./Routes/TotalBalanceRoute.js');
+const ChartDatasection = require('./Routes/ChartDataRoute.js');
+const Logoutsection = require('./Routes/LogoutRoute.js');
+const LineChartSection = require('./Routes/LinechartRoute.js');
+const UpdateInexRoute = require('./Routes/UpdataInexroute.js');
+const DeleteRoute = require('./Routes/DeleteTransactionRoute.js');
 
 const serverless = require('serverless-http')
 connectDatabase();
@@ -27,7 +27,7 @@ app.use(cors({
   origin: [
     "http://localhost:5173",                
   ],
-  methods: ["GET", "POST", "PUT", "DELETE"],
+  methods: ["GET", "POST", "PUT", "DELETE","HEAD","PATCH"],
   credentials: true
 }));
 
