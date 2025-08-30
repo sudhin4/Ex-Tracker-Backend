@@ -53,5 +53,5 @@ app.get('/api/v1/test',(req,res)=>{
 
 
 
-
-module.exports = serverless(app)
+module.exports = app
+module.exports.handler = serverless(app)
