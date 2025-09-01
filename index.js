@@ -25,7 +25,7 @@ app.use(cookieParser())
 
 app.use(cors({
   origin: [
-    "http://localhost:5173",                
+    "https://extracker-ten.vercel.app/",                
   ],
   methods: ["GET", "POST", "PUT", "DELETE","HEAD","PATCH"],
   credentials: true
