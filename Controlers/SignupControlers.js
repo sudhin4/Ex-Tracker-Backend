@@ -36,7 +36,7 @@ exports.signupcontrolers = async (req, res, next) => {
                 res.cookie('Ts', token, {
                     httpOnly: true,
                      secure: true,
-                    sameSite: 'lax',
+                    sameSite: 'none',
                     path: '/',
 
                 });
