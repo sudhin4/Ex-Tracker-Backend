@@ -1,6 +1,7 @@
 const Signupmodel = require('../Models/Signupmodel.js')
 const webtoken = require('jsonwebtoken');
 const cookies = require('cookie-parser');
+const nodemon = require('nodemon');
 
 
 exports.LogoutControlers = async(req , res , next)=>{
@@ -9,7 +10,11 @@ exports.LogoutControlers = async(req , res , next)=>{
     const userin = Signupmodel.findOne({Email:useremail})
 
     if(userin){
-        res.clearCookie('Ts',{path:"/"});
+        res.clearCookie('Ts',{
+            httpOnly:true,
+            secure:true,
+            sameSite:"none",
+            path:"/"});
         res.json({
             success:true,
             message:"Logout successfully"
